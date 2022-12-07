@@ -7,7 +7,7 @@ public class Solution extends VersionControl {
         int right = n;
         int ans = 0;
         while (left <= right){
-            int mid = left + (right-left)/2;
+            int mid = left + (right-left)/2; // (left+right) 하면 int 범위 초과할 수 있음
             if(isBadVersion(mid)){
                 ans=mid;
                 right = mid-1;
