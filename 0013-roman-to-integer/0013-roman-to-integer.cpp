@@ -18,43 +18,13 @@ public:
         int answer = 0;
         
         for (int i=0; i<s.length(); i++) {
-            if (v.empty()) {
-                v.push_back(s[i]);
+            if (m[s[i]] < m[s[i+1]]) {
+                answer -= m[s[i]];
             } else {
-                //v의 top이랑 새로운 문자를 비교
-                //새로운 문자가 더 크면 바로 더함.
-                if (m[v.back()] > m[s[i]]) {
-                    while (!v.empty()) {
-                        answer += m[v.back()];
-                        v.pop_back();
-                    }
-                    v.push_back(s[i]);
-                }
-                
-                else if (m[v.back()] == m[s[i]]) {
-                    v.push_back(s[i]);
-                }
-                
-                else {
-                    int temp = 0;
-                    while (!v.empty()) {
-                        temp += m[v.back()];
-                        v.pop_back();
-                    }
-                    
-                    answer += (m[s[i]] - temp);
-                }
-            }  
-        }
-        
-        
-        while (!v.empty()) {
-            answer += m[v.back()];
-            v.pop_back();
+                answer += m[s[i]];
+            }
         }
         
         return answer;
     }
-    
-
 };
